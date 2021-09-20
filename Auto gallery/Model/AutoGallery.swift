@@ -84,7 +84,7 @@ struct AutoGallery {
     var groupsCollections: [GroupCollection]
     
     init() {
-        
+        //MARK: - BMW
         let bmwM0 = Car(name: "BMW M240i xDrive Coupe", cost: "4 590 000 р", image: UIImage(named: "bmwm0")!)
         let bmwM1 = Car(name: "BMW M235i xDrive Gran Coupe", cost: "4 430 000 р", image: UIImage(named: "bmwm1")!)
         let bmwM2 = Car(name: "BMW M3 Competition", cost: "7 370 000 р", image: UIImage(named: "bmwm2")!)
@@ -123,10 +123,52 @@ struct AutoGallery {
 
         let bmwGroupCollection = GroupCollection(name: "BMW", groups: [bmwM, bmwX, bmw2ser, bmw3ser, bmw4ser, bmw5ser, bmw7ser, bmw8ser], image: UIImage(named: "bmwSymbol")!)
         
+        //MARK: - Audi
         
+        let audiSov0 = Car(name: "Q5", cost: "2 256 000 р", image: UIImage(named: "sov0")!)
+        let audiSov1 = Car(name: "SQ5", cost: "3 260 000 р", image: UIImage(named: "sov1")!)
+        let audiSov2 = Car(name: "Q7 TDI", cost: "2 736 000 р", image: UIImage(named: "sov2")!)
+        let audiSov3 = Car(name: "Q8", cost: "2 980 000 р", image: UIImage(named: "sov3")!)
+        let audiSov4 = Car(name: "Q8 TDI", cost: "3 256 000 р", image: UIImage(named: "sov4")!)
+        let audiSov5 = Car(name: "RS Q8", cost: "4 250 000 р", image: UIImage(named: "sov5")!)
+        let audiSov = Group(name: "SUV", cars: [audiSov0, audiSov1, audiSov2, audiSov3, audiSov4, audiSov5])
+        
+        let audiCoupe0 = Car(name: "A5 Coupe", cost: "3 256 000 р", image: UIImage(named: "coupe0")!)
+        let audiCoupe1 = Car(name: "RS5 Coupe", cost: "2 786 000 р", image: UIImage(named: "coupe1")!)
+        let audiCoupe = Group(name: "Coupe", cars: [audiCoupe0, audiCoupe1])
+        
+        let audiSport0 = Car(name: "SQ5", cost: "3 256 000 р", image: UIImage(named: "sport0")!)
+        let audiSport1 = Car(name: "SQ8 TDI", cost: "2 756 000 р", image: UIImage(named: "sport1")!)
+        let audiSport2 = Car(name: "RS Q8", cost: "3 956 000 р", image: UIImage(named: "sport2")!)
+        let audiSport = Group(name: "Sport", cars: [audiSport0, audiSport1, audiSport2])
+        
+        let audiSportBack0 = Car(name: "SQ5", cost: "2 159 000 р", image: UIImage(named: "sportback0")!)
+        let audiSportBack1 = Car(name: "SQ5", cost: "3 670 000 р", image: UIImage(named: "sportback1")!)
+        let audiSportBack2 = Car(name: "SQ5", cost: "3 100 000 р", image: UIImage(named: "sportback2")!)
+        let audiSportBack = Group(name: "Sportback", cars: [audiSportBack0, audiSportBack1, audiSportBack2])
+        
+        let audiGroupCollection = GroupCollection(name: "Audi", groups: [audiSov, audiCoupe, audiSport, audiSportBack], image: UIImage(named: "audiSymbol")!)
+        
+        //MARK: - Kia
+        
+        let kiaStinger0 = Car(name: "Stinger luxe", cost: "2 256 000 р", image: UIImage(named: "stinger0")!)
+        let kiaStinger1 = Car(name: "Stinger GT Line", cost: "3 756 000 р", image: UIImage(named: "stinger1")!)
+        let kiaStinger2 = Car(name: "Stinger GT Line Suede", cost: "3 596 000 р", image: UIImage(named: "stinger2")!)
+        let kiaStinger = Group(name: "Stinger", cars: [kiaStinger2, kiaStinger1, kiaStinger0])
+        
+        let kiaK9000 = Car(name: "K900 Prestige", cost: "5 856 000 р", image: UIImage(named: "k9000")!)
+        let kiaK9001 = Car(name: "K900 Premium", cost: "6 220 000 р", image: UIImage(named: "k9001")!)
+        let kiaK900 = Group(name: "K900", cars: [kiaK9000, kiaK9001])
+        
+        let kiaPicanto0 = Car(name: "Picanto Classic", cost: "2 250 000 р", image: UIImage(named: "picanto0")!)
+        let kiaPicanto1 = Car(name: "Picanto Comfort", cost: "2 550 000 р", image: UIImage(named: "picanto1")!)
+        let kiaPicanto2 = Car(name: "Picanto Premium", cost: "2 990 000 р", image: UIImage(named: "picanto2")!)
+        let kiaPicanto = Group(name: "Picanto", cars: [kiaPicanto2, kiaPicanto1, kiaPicanto0])
+        
+        let kiaGroupCollection = GroupCollection(name: "Kia", groups: [kiaStinger, kiaK900, kiaPicanto], image: UIImage(named: "kiaSymbol")!)
     
         self.name = "Auto gallery"
-        self.groupsCollections = [bmwGroupCollection, bmwGroupCollection, bmwGroupCollection, bmwGroupCollection, bmwGroupCollection]
+        self.groupsCollections = [bmwGroupCollection, audiGroupCollection, kiaGroupCollection, bmwGroupCollection, audiGroupCollection, kiaGroupCollection, bmwGroupCollection, audiGroupCollection, kiaGroupCollection]
         
     }
 }
