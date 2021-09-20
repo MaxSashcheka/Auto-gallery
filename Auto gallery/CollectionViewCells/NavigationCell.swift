@@ -15,7 +15,12 @@ class NavigationCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+    
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.black.cgColor
+        layer.cornerRadius = 15
+        backgroundColor = .white
+ 
     }
     
     func configure(withGroup group: Group) {
@@ -23,7 +28,7 @@ class NavigationCell: UICollectionViewCell {
     }
     
     static func nib() -> UINib {
-        return UINib(nibName: "CarCell", bundle: nil)
+        return UINib(nibName: "NavigationCell", bundle: nil)
     }
 
 }

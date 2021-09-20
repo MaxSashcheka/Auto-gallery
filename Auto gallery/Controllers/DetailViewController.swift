@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     
     var groupCollection = GroupCollection()
     var carCollectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    var navigationCollectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
     var selectedIndex = 0
     
@@ -28,42 +29,89 @@ class DetailViewController: UIViewController {
         navigationCollectionView.delegate = self
         navigationCollectionView.dataSource = self
         navigationCollectionView.register(NavigationCell.nib(), forCellWithReuseIdentifier: NavigationCell.reuseIdentifier)
+        navigationCollectionView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         
         
     }
 
 }
+
+//MARK: - UICollectionViewDataSource & UICollectionViewDelegate
 
 extension DetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return groupCollection.groups[selectedIndex].cars.count
+        if collectionView == navigationCollectionView {
+            return groupCollection.groups.count
+        } else {
+            return groupCollection.groups[selectedIndex].cars.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarCell.reuseIdentifier, for: indexPath) as! CarCell
         
-        let group = groupCollection.groups[selectedIndex]
-        let car = group.cars[indexPath.item]
-        cell.configure(withCar: car)
+        if collectionView == navigationCollectionView {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NavigationCell.reuseIdentifier, for: indexPath) as! NavigationCell
+            
+            // Check if current cell should be selected (filled with color)
+            cell.layer.borderColor = (selectedIndex == indexPath.item) ? UIColor.red.cgColor : UIColor.black.cgColor
+            
+            let group = groupCollection.groups[indexPath.item]
+            cell.configure(withGroup: group)
+            
+            return cell
+        } else {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarCell.reuseIdentifier, for: indexPath) as! CarCell
+            
+            let group = groupCollection.groups[selectedIndex]
+            let car = group.cars[indexPath.item]
+            cell.configure(withCar: car)
+            
+            return cell
+        }
         
-        return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == navigationCollectionView {
+            selectedIndex = indexPath.item
+            
+            navigationCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            carCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: true)
+            
+            navigationCollectionView.reloadData()
+            carCollectionView.reloadData()
+        }
+    }
     
 }
+
+//MARK: - UICollectionViewDelegateFlowLayout
 
 extension DetailViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let itemWidth = collectionView.frame.width - carCollectionInsets.left * 2
-        
-        return CGSize(width: itemWidth, height: itemWidth * 1.2)
+        if collectionView == navigationCollectionView {
+            let group = groupCollection.groups[indexPath.item]
+            let itemWidth = group.name.widthOfString(usingFont: UIFont.systemFont(ofSize: 17)) + 30
+            let itemHeight = navigationCollectionView.frame.height - navigationCollectionInsets.bottom * 2
+            
+            return CGSize(width: itemWidth, height: itemHeight)
+        } else {
+            let itemWidth = collectionView.frame.width - carCollectionInsets.left * 2
+            return CGSize(width: itemWidth, height: itemWidth * 1.2)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return carCollectionInsets
+        if collectionView == navigationCollectionView {
+            return navigationCollectionInsets
+        } else {
+            return carCollectionInsets
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
