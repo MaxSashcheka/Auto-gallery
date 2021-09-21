@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PassDataToConfigurePopUpDelegate {
+    func passData(itemsPerRow: CGFloat, scrollDirection: UICollectionView.ScrollDirection)
+}
+
 class MainViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -15,14 +19,17 @@ class MainViewController: UIViewController {
     var itemsPerRow: CGFloat = 2
     var sectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     
+    var delegate: PassDataToConfigurePopUpDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
-
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MainCell.nib(), forCellWithReuseIdentifier: MainCell.reuseIdentifier)
-        
+    
         setupNavigationBar()
         
         let editButton = CustomButton()
@@ -37,11 +44,14 @@ class MainViewController: UIViewController {
     }
     
     @objc private func editButtonHandler() {
-        let popUp = ConfigureMainScreenViewController.create(withDelegate: self)
-        let sbPopUp = SBCardPopupViewController.init(contentViewController: popUp)
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        let popUp = ConfigureMainScreenViewController.create(withDelegate: self, itemsPerRow: itemsPerRow, scrollDirection: layout.scrollDirection)
+        let sbPopUp = SBCardPopupViewController(contentViewController: popUp)
+        
+        
         sbPopUp.cornerRadius = 30
         sbPopUp.show(onViewController: self)
-        
     }
     
     private func setupNavigationBar() {
@@ -52,7 +62,6 @@ class MainViewController: UIViewController {
         ]
         titleLabel.attributedText = NSAttributedString(string: "\(autoGallery.name)", attributes: attributes)
         navigationItem.titleView = titleLabel
-        
     
     }
 }
@@ -118,7 +127,6 @@ extension MainViewController: MainScreenConfigurationDelegate {
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = scrollDirection
             collectionView.collectionViewLayout = layout
-
         }
         collectionView.reloadData()
     }

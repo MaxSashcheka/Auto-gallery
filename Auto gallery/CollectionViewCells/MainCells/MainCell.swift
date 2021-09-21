@@ -21,6 +21,7 @@ class MainCell: UICollectionViewCell {
         layer.borderWidth = 2
         layer.borderColor = UIColor.black.cgColor
         layer.cornerRadius = layer.frame.height / 9
+        backgroundColor = .white
         
     }
     

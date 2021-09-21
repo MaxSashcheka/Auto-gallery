@@ -172,7 +172,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pOx-yp-9Zr">
-                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="730"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ztJ-fX-jFR">
                                     <size key="itemSize" width="128" height="128"/>
@@ -185,6 +185,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ywe-cq-LbN">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="p5Q-gC-yp7">
+                                        <rect key="frame" x="0.0" y="150.5" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Pzu-kB-5de">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
@@ -205,16 +213,24 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dRQ-l8-HV5">
+                                <rect key="frame" x="0.0" y="834" width="414" height="28"/>
+                                <color key="pageIndicatorTintColor" systemColor="systemGray2Color"/>
+                                <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
+                            </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="pOx-yp-9Zr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1PZ-1a-Wzh"/>
+                            <constraint firstItem="dRQ-l8-HV5" firstAttribute="top" secondItem="pOx-yp-9Zr" secondAttribute="bottom" id="2gh-3a-1Oe"/>
                             <constraint firstItem="JW4-wb-FMM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="B0V-hp-S2z"/>
+                            <constraint firstItem="dRQ-l8-HV5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BAx-dK-my6"/>
                             <constraint firstItem="pOx-yp-9Zr" firstAttribute="top" secondItem="JW4-wb-FMM" secondAttribute="bottom" id="RD0-iW-vJh"/>
+                            <constraint firstItem="dRQ-l8-HV5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Rp4-Io-XOV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pOx-yp-9Zr" secondAttribute="trailing" id="WDU-sm-9sw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JW4-wb-FMM" secondAttribute="trailing" id="dTe-vO-Vgf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pOx-yp-9Zr" secondAttribute="bottom" id="qou-wX-Uos"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dRQ-l8-HV5" secondAttribute="trailing" id="dkA-jJ-VBf"/>
                             <constraint firstItem="JW4-wb-FMM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yLy-8U-OXT"/>
                         </constraints>
                     </view>
@@ -222,6 +238,7 @@
                     <connections>
                         <outlet property="carCollectionView" destination="pOx-yp-9Zr" id="Yg1-Gq-Oih"/>
                         <outlet property="navigationCollectionView" destination="JW4-wb-FMM" id="cS6-uB-pD7"/>
+                        <outlet property="pageControl" destination="dRQ-l8-HV5" id="LHU-Tl-J6A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -248,8 +265,14 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

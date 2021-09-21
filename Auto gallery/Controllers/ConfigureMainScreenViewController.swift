@@ -16,6 +16,7 @@ class ConfigureMainScreenViewController: UIViewController, SBCardPopupContent {
     var popupDismisser: SBCardPopupDismisser?
     var allowsTapToDismissPopupCard = false
     var allowsSwipeToDismissPopupCard = false
+    var properti: String!
     
     var delegate: MainScreenConfigurationDelegate?
     
@@ -23,7 +24,9 @@ class ConfigureMainScreenViewController: UIViewController, SBCardPopupContent {
     @IBOutlet var labels: [UILabel]!
     
     @IBOutlet weak var numberOfItemsSegmentedControl: UISegmentedControl!
+    var numberOfItemsSegmentedControlInitialValue: Int!
     @IBOutlet weak var scrollDirectionSegmentedControl: UISegmentedControl!
+    var scrollDirectionSegmentedControlInitialValue: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +41,19 @@ class ConfigureMainScreenViewController: UIViewController, SBCardPopupContent {
         scrollDirectionSegmentedControl.layer.borderWidth = 1
         scrollDirectionSegmentedControl.layer.borderColor = UIColor.gray.cgColor
         
+        numberOfItemsSegmentedControl.selectedSegmentIndex = numberOfItemsSegmentedControlInitialValue
+        scrollDirectionSegmentedControl.selectedSegmentIndex = scrollDirectionSegmentedControlInitialValue
+        
     }
     
-    static func create(withDelegate delegate: MainScreenConfigurationDelegate) -> UIViewController {
+    static func create(withDelegate delegate: MainScreenConfigurationDelegate, itemsPerRow: CGFloat, scrollDirection: UICollectionView.ScrollDirection) -> UIViewController {
+        
         guard let popUpViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ConfigureMainScreenViewController") as? ConfigureMainScreenViewController else { return UIViewController() }
         popUpViewController.delegate = delegate
+        popUpViewController.configure(itemsPerRow: itemsPerRow, scrollDirection: scrollDirection)
         
         return popUpViewController
     }
-    
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
@@ -56,12 +63,30 @@ class ConfigureMainScreenViewController: UIViewController, SBCardPopupContent {
         
         delegate?.setup(withItemsPerRow: CGFloat(numberOfItemsPerRow), collectionViewScrollDirection: direction)
         popupDismisser?.dismiss()
-        
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
         popupDismisser?.dismiss()
     }
     
+    func configure(itemsPerRow: CGFloat, scrollDirection: UICollectionView.ScrollDirection) {
+        numberOfItemsSegmentedControlInitialValue = Int(itemsPerRow) - 1
+        if scrollDirection == .vertical {
+            scrollDirectionSegmentedControlInitialValue = 0
+        } else {
+            scrollDirectionSegmentedControlInitialValue = 1
+        }
+    }
 
 }
+
+//extension ConfigureMainScreenViewController: PassDataToConfigurePopUpDelegate {
+//    func passData(itemsPerRow: CGFloat, scrollDirection: UICollectionView.ScrollDirection) {
+//
+//        numberOfItemsSegmentedControl.selectedSegmentIndex = Int(itemsPerRow) - 1
+//
+//
+//    }
+//
+//
+//}

@@ -11,6 +11,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var carCollectionView: UICollectionView!
     @IBOutlet weak var navigationCollectionView: UICollectionView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     var groupCollection: GroupCollection!
     var carCollectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
@@ -54,7 +55,8 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
         if collectionView == navigationCollectionView {
             return groupCollection.groups.count
         } else {
-            return groupCollection.groups[selectedIndex].cars.count
+            pageControl.numberOfPages = groupCollection.groups[selectedIndex].cars.count
+            return pageControl.numberOfPages
         }
     }
     
@@ -95,6 +97,11 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
             carCollectionView.reloadData()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        pageControl.currentPage = indexPath.item
+    }
+    
     
 }
 
