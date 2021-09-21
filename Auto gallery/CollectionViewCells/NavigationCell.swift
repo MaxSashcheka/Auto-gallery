@@ -16,11 +16,22 @@ class NavigationCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.black.cgColor
+        layer.borderWidth = 1
+        layer.borderColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1).cgColor
         layer.cornerRadius = 15
         backgroundColor = .white
  
+    }
+    
+    func isSelectedSetup(_ isSelected: Bool) {
+        if isSelected {
+            backgroundColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+            nameLabel.textColor = .white
+        } else {
+            backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            nameLabel.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+
+        }
     }
     
     func configure(withGroup group: Group) {

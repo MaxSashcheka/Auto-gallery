@@ -29,8 +29,6 @@ class DetailViewController: UIViewController {
         navigationCollectionView.delegate = self
         navigationCollectionView.dataSource = self
         navigationCollectionView.register(NavigationCell.nib(), forCellWithReuseIdentifier: NavigationCell.reuseIdentifier)
-        navigationCollectionView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        
         
     }
 
@@ -55,8 +53,8 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NavigationCell.reuseIdentifier, for: indexPath) as! NavigationCell
             
             // Check if current cell should be selected (filled with color)
-            cell.layer.borderColor = (selectedIndex == indexPath.item) ? UIColor.red.cgColor : UIColor.black.cgColor
-            
+            cell.isSelectedSetup(selectedIndex == indexPath.item)
+  
             let group = groupCollection.groups[indexPath.item]
             cell.configure(withGroup: group)
             
