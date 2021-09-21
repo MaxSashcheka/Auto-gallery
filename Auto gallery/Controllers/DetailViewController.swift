@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var carCollectionView: UICollectionView!
     @IBOutlet weak var navigationCollectionView: UICollectionView!
     
-    var groupCollection = GroupCollection()
+    var groupCollection: GroupCollection!
     var carCollectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     var navigationCollectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
@@ -29,6 +29,18 @@ class DetailViewController: UIViewController {
         navigationCollectionView.delegate = self
         navigationCollectionView.dataSource = self
         navigationCollectionView.register(NavigationCell.nib(), forCellWithReuseIdentifier: NavigationCell.reuseIdentifier)
+        
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
+        let titleLabel = UILabel()
+        let attributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .bold),
+            NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+        ] 
+        titleLabel.attributedText = NSAttributedString(string: "\(groupCollection.name)", attributes: attributes)
+        navigationItem.titleView = titleLabel
         
     }
 

@@ -22,7 +22,7 @@ class DismissButton: UIButton {
     private func setup() {
         setImage(UIImage(systemName: "xmark"), for: .normal)
         tintColor          = .black
-        layer.cornerRadius = 17
+        layer.cornerRadius = 14
         layer.borderWidth  = 1
         layer.borderColor  = UIColor.black.cgColor
         adjustsImageWhenHighlighted = false

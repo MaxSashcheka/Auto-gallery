@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD02C30426F9C5D8008FFCD0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD02C30326F9C5D8008FFCD0 /* MainViewController.swift */; };
+		DD02C30A26F9C7EB008FFCD0 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD02C30826F9C7EB008FFCD0 /* MainCell.swift */; };
+		DD02C30B26F9C7EB008FFCD0 /* MainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD02C30926F9C7EB008FFCD0 /* MainCell.xib */; };
+		DD02C30E26F9CCB6008FFCD0 /* SBCardPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD02C30D26F9CCB6008FFCD0 /* SBCardPopupViewController.swift */; };
 		DD5632FE26F9237D005B0CBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5632FD26F9237D005B0CBD /* AppDelegate.swift */; };
 		DD56330026F9237D005B0CBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5632FF26F9237D005B0CBD /* SceneDelegate.swift */; };
 		DD56330226F9237D005B0CBD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD56330126F9237D005B0CBD /* DetailViewController.swift */; };
@@ -20,9 +24,15 @@
 		DD56332926F92F55005B0CBD /* CarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD56332726F92F55005B0CBD /* CarCell.xib */; };
 		DD56332D26F93652005B0CBD /* NavigationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD56332B26F93652005B0CBD /* NavigationCell.swift */; };
 		DD56332E26F93652005B0CBD /* NavigationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD56332C26F93652005B0CBD /* NavigationCell.xib */; };
+		DD6260E826F9FE90005F839F /* ConfigureMainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6260E726F9FE90005F839F /* ConfigureMainScreenViewController.swift */; };
+		DD6260EF26FA02F4005F839F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6260EE26FA02F4005F839F /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD02C30326F9C5D8008FFCD0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		DD02C30826F9C7EB008FFCD0 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		DD02C30926F9C7EB008FFCD0 /* MainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCell.xib; sourceTree = "<group>"; };
+		DD02C30D26F9CCB6008FFCD0 /* SBCardPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBCardPopupViewController.swift; sourceTree = "<group>"; };
 		DD5632FA26F9237D005B0CBD /* Auto gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto gallery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD5632FD26F9237D005B0CBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD5632FF26F9237D005B0CBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +48,8 @@
 		DD56332726F92F55005B0CBD /* CarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarCell.xib; sourceTree = "<group>"; };
 		DD56332B26F93652005B0CBD /* NavigationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCell.swift; sourceTree = "<group>"; };
 		DD56332C26F93652005B0CBD /* NavigationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationCell.xib; sourceTree = "<group>"; };
+		DD6260E726F9FE90005F839F /* ConfigureMainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureMainScreenViewController.swift; sourceTree = "<group>"; };
+		DD6260EE26FA02F4005F839F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD02C30626F9C7B3008FFCD0 /* DetailCells */ = {
+			isa = PBXGroup;
+			children = (
+				DD56332626F92F55005B0CBD /* CarCell.swift */,
+				DD56332726F92F55005B0CBD /* CarCell.xib */,
+				DD56332B26F93652005B0CBD /* NavigationCell.swift */,
+				DD56332C26F93652005B0CBD /* NavigationCell.xib */,
+			);
+			path = DetailCells;
+			sourceTree = "<group>";
+		};
+		DD02C30726F9C7C1008FFCD0 /* MainCells */ = {
+			isa = PBXGroup;
+			children = (
+				DD02C30826F9C7EB008FFCD0 /* MainCell.swift */,
+				DD02C30926F9C7EB008FFCD0 /* MainCell.xib */,
+			);
+			path = MainCells;
+			sourceTree = "<group>";
+		};
 		DD5632F126F9237D005B0CBD = {
 			isa = PBXGroup;
 			children = (
@@ -73,7 +105,7 @@
 				DD56331326F92456005B0CBD /* Controllers */,
 				DD56331226F9244D005B0CBD /* Storyboards */,
 				DD56331A26F924DE005B0CBD /* Model */,
-				DD56331726F9248A005B0CBD /* SupportingFiles */,
+				DD56331726F9248A005B0CBD /* Application  */,
 				DD56331626F9247D005B0CBD /* Helpers */,
 				DD56331526F92468005B0CBD /* CollectionViewCells */,
 				DD56331426F9245E005B0CBD /* CustomViews */,
@@ -96,6 +128,9 @@
 			isa = PBXGroup;
 			children = (
 				DD56330126F9237D005B0CBD /* DetailViewController.swift */,
+				DD02C30326F9C5D8008FFCD0 /* MainViewController.swift */,
+				DD6260E726F9FE90005F839F /* ConfigureMainScreenViewController.swift */,
+				DD02C30D26F9CCB6008FFCD0 /* SBCardPopupViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -103,6 +138,7 @@
 		DD56331426F9245E005B0CBD /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				DD6260EE26FA02F4005F839F /* CustomButton.swift */,
 				DD56332226F92C42005B0CBD /* DismissButton.swift */,
 			);
 			path = CustomViews;
@@ -111,10 +147,8 @@
 		DD56331526F92468005B0CBD /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				DD56332626F92F55005B0CBD /* CarCell.swift */,
-				DD56332726F92F55005B0CBD /* CarCell.xib */,
-				DD56332B26F93652005B0CBD /* NavigationCell.swift */,
-				DD56332C26F93652005B0CBD /* NavigationCell.xib */,
+				DD02C30726F9C7C1008FFCD0 /* MainCells */,
+				DD02C30626F9C7B3008FFCD0 /* DetailCells */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -127,13 +161,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		DD56331726F9248A005B0CBD /* SupportingFiles */ = {
+		DD56331726F9248A005B0CBD /* Application  */ = {
 			isa = PBXGroup;
 			children = (
 				DD5632FD26F9237D005B0CBD /* AppDelegate.swift */,
 				DD5632FF26F9237D005B0CBD /* SceneDelegate.swift */,
 			);
-			path = SupportingFiles;
+			path = "Application ";
 			sourceTree = "<group>";
 		};
 		DD56331A26F924DE005B0CBD /* Model */ = {
@@ -203,6 +237,7 @@
 			files = (
 				DD56332E26F93652005B0CBD /* NavigationCell.xib in Resources */,
 				DD56330A26F9237F005B0CBD /* LaunchScreen.storyboard in Resources */,
+				DD02C30B26F9C7EB008FFCD0 /* MainCell.xib in Resources */,
 				DD56330726F9237F005B0CBD /* Assets.xcassets in Resources */,
 				DD56332926F92F55005B0CBD /* CarCell.xib in Resources */,
 				DD56330526F9237D005B0CBD /* Main.storyboard in Resources */,
@@ -220,8 +255,13 @@
 				DD56332026F92C23005B0CBD /* Extensions.swift in Sources */,
 				DD56330226F9237D005B0CBD /* DetailViewController.swift in Sources */,
 				DD56331C26F924E7005B0CBD /* AutoGallery.swift in Sources */,
+				DD6260E826F9FE90005F839F /* ConfigureMainScreenViewController.swift in Sources */,
+				DD02C30A26F9C7EB008FFCD0 /* MainCell.swift in Sources */,
 				DD5632FE26F9237D005B0CBD /* AppDelegate.swift in Sources */,
 				DD56332826F92F55005B0CBD /* CarCell.swift in Sources */,
+				DD6260EF26FA02F4005F839F /* CustomButton.swift in Sources */,
+				DD02C30E26F9CCB6008FFCD0 /* SBCardPopupViewController.swift in Sources */,
+				DD02C30426F9C5D8008FFCD0 /* MainViewController.swift in Sources */,
 				DD56330026F9237D005B0CBD /* SceneDelegate.swift in Sources */,
 				DD56332D26F93652005B0CBD /* NavigationCell.swift in Sources */,
 			);
