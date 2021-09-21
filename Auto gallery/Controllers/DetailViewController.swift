@@ -43,6 +43,10 @@ class DetailViewController: UIViewController {
         titleLabel.attributedText = NSAttributedString(string: "\(groupCollection.name)", attributes: attributes)
         navigationItem.titleView = titleLabel
         
+        
+        
+        
+        
     }
 
 }

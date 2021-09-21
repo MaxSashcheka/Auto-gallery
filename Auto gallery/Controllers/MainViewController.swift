@@ -62,10 +62,14 @@ class MainViewController: UIViewController {
         ]
         titleLabel.attributedText = NSAttributedString(string: "\(autoGallery.name)", attributes: attributes)
         navigationItem.titleView = titleLabel
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrowshape.turn.up.backward")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrowshape.turn.up.backward")!
+        navigationController?.navigationBar.tintColor = .lightGreenSea
     
     }
 }
-
 
 // MARK: - UICollectionViewDelegate & UICollectionViewDataSource
 
