@@ -166,9 +166,19 @@ struct AutoGallery {
         let kiaPicanto = Group(name: "Picanto", cars: [kiaPicanto2, kiaPicanto1, kiaPicanto0])
         
         let kiaGroupCollection = GroupCollection(name: "Kia", groups: [kiaStinger, kiaK900, kiaPicanto], image: UIImage(named: "kiaSymbol")!)
+        
+        
+        let honda = GroupCollection(name: "Honda", groups: [bmwM, bmwX, bmw2ser, bmw3ser, bmw4ser, bmw5ser, bmw7ser, bmw8ser], image: UIImage(named: "hondaSymbol")!)
+        let lexus = GroupCollection(name: "Lexus", groups: [bmwM, bmwX, bmw2ser, bmw3ser, bmw4ser, bmw5ser, bmw7ser, bmw8ser], image: UIImage(named: "lexusSymbol")!)
+        let mazda = GroupCollection(name: "Mazda", groups: [bmwM, bmwX, bmw2ser, bmw3ser, bmw4ser, bmw5ser, bmw7ser, bmw8ser], image: UIImage(named: "mazdaSymbol")!)
+        let mercedes = GroupCollection(name: "Mercedes", groups: [bmwM, bmwX, bmw2ser, bmw3ser, bmw4ser, bmw5ser, bmw7ser, bmw8ser], image: UIImage(named: "mercedesSymbol")!)
+        let subaru = GroupCollection(name: "Subaru", groups: [bmwM, bmwX, bmw2ser, bmw3ser, bmw4ser, bmw5ser, bmw7ser, bmw8ser], image: UIImage(named: "subaruSymbol")!)
+        let volkswagen = GroupCollection(name: "Volkswagen", groups: [bmwM, bmwX, bmw2ser, bmw3ser, bmw4ser, bmw5ser, bmw7ser, bmw8ser], image: UIImage(named: "volkswagenSymbol")!)
+        let volvo = GroupCollection(name: "Volvo", groups: [bmwM, bmwX, bmw2ser, bmw3ser, bmw4ser, bmw5ser, bmw7ser, bmw8ser], image: UIImage(named: "volvoSymbol")!)
+        
     
         self.name = "Auto gallery"
-        self.groupsCollections = [bmwGroupCollection, audiGroupCollection, kiaGroupCollection, bmwGroupCollection, audiGroupCollection, kiaGroupCollection, bmwGroupCollection, audiGroupCollection, kiaGroupCollection]
+        self.groupsCollections = [bmwGroupCollection, audiGroupCollection, kiaGroupCollection, honda, lexus, mazda, mercedes, subaru, volkswagen, volvo]
         
     }
 }
