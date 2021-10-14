@@ -20,7 +20,6 @@ class NavigationCell: UICollectionViewCell {
         layer.borderColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1).cgColor
         layer.cornerRadius = 15
         backgroundColor = .white
- 
     }
     
     func isSelectedSetup(_ isSelected: Bool) {
@@ -30,7 +29,6 @@ class NavigationCell: UICollectionViewCell {
         } else {
             backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             nameLabel.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
-
         }
     }
     

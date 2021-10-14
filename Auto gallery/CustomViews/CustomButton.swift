@@ -27,11 +27,8 @@ class CustomButton: UIButton {
         layer.shadowOpacity = 1.0
         layer.shadowOffset = .zero
         layer.cornerRadius = 15
-        
-//        let font = UIFont.systemFont(ofSize: 14, weight: .medium)
-//        titleLabel?.font = font
     }
-    
+
     override var isHighlighted: Bool {
         didSet {
             UIView.transition(with: self, duration: 0.2, options: [.transitionCrossDissolve]) { [self] in
@@ -45,5 +42,4 @@ class CustomButton: UIButton {
             }
         }
     }
-    
 }

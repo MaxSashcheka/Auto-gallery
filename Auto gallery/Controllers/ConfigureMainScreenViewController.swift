@@ -20,7 +20,6 @@ class ConfigureMainScreenViewController: UIViewController, SBCardPopupContent {
     
     var delegate: MainScreenConfigurationDelegate?
     
-    
     @IBOutlet var labels: [UILabel]!
     
     @IBOutlet weak var numberOfItemsSegmentedControl: UISegmentedControl!
@@ -31,8 +30,11 @@ class ConfigureMainScreenViewController: UIViewController, SBCardPopupContent {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         labels.forEach { $0.textColor = .lightGreenSea }
+        configureSegmentedControls()
+    }
+    
+    private func configureSegmentedControls() {
         numberOfItemsSegmentedControl.selectedSegmentTintColor = .lightGreenSea
         scrollDirectionSegmentedControl.selectedSegmentTintColor = .lightGreenSea
         numberOfItemsSegmentedControl.layer.borderWidth = 1
@@ -43,11 +45,9 @@ class ConfigureMainScreenViewController: UIViewController, SBCardPopupContent {
         
         numberOfItemsSegmentedControl.selectedSegmentIndex = numberOfItemsSegmentedControlInitialValue
         scrollDirectionSegmentedControl.selectedSegmentIndex = scrollDirectionSegmentedControlInitialValue
-        
     }
     
     static func create(withDelegate delegate: MainScreenConfigurationDelegate, itemsPerRow: CGFloat, scrollDirection: UICollectionView.ScrollDirection) -> UIViewController {
-        
         guard let popUpViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ConfigureMainScreenViewController") as? ConfigureMainScreenViewController else { return UIViewController() }
         popUpViewController.delegate = delegate
         popUpViewController.configure(itemsPerRow: itemsPerRow, scrollDirection: scrollDirection)
@@ -56,7 +56,6 @@ class ConfigureMainScreenViewController: UIViewController, SBCardPopupContent {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        
         let numberOfItemsPerRow = numberOfItemsSegmentedControl.selectedSegmentIndex + 1
         
         let direction = (scrollDirectionSegmentedControl.selectedSegmentIndex == 0) ? UICollectionView.ScrollDirection.vertical : UICollectionView.ScrollDirection.horizontal
@@ -79,14 +78,3 @@ class ConfigureMainScreenViewController: UIViewController, SBCardPopupContent {
     }
 
 }
-
-//extension ConfigureMainScreenViewController: PassDataToConfigurePopUpDelegate {
-//    func passData(itemsPerRow: CGFloat, scrollDirection: UICollectionView.ScrollDirection) {
-//
-//        numberOfItemsSegmentedControl.selectedSegmentIndex = Int(itemsPerRow) - 1
-//
-//
-//    }
-//
-//
-//}

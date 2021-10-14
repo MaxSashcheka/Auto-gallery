@@ -18,8 +18,8 @@ class CarCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4).cgColor
-        setup(withCornerRadius: 30, shadowRadius: 8, shadowColor: shadowColor)
+        let shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+        setup(withCornerRadius: 30, shadowRadius: 5, shadowColor: shadowColor)
     }
     
     func configure(withCar car: Car) {

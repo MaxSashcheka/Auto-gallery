@@ -24,8 +24,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MainCell.nib(), forCellWithReuseIdentifier: MainCell.reuseIdentifier)
@@ -49,7 +47,6 @@ class MainViewController: UIViewController {
         let popUp = ConfigureMainScreenViewController.create(withDelegate: self, itemsPerRow: itemsPerRow, scrollDirection: layout.scrollDirection)
         let sbPopUp = SBCardPopupViewController(contentViewController: popUp)
         
-        
         sbPopUp.cornerRadius = 30
         sbPopUp.show(onViewController: self)
     }
@@ -67,7 +64,6 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrowshape.turn.up.backward")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrowshape.turn.up.backward")!
         navigationController?.navigationBar.tintColor = .lightGreenSea
-    
     }
 }
 
@@ -102,6 +98,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingWidth = (itemsPerRow + 1) * sectionInsets.left
         let availableWidth = collectionView.frame.width - paddingWidth
@@ -124,7 +121,10 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+// MARK: - MainScreenConfigurationDelegate
+
 extension MainViewController: MainScreenConfigurationDelegate {
+    
     func setup(withItemsPerRow itemsPerRow: CGFloat, collectionViewScrollDirection scrollDirection: UICollectionView.ScrollDirection) {
         self.itemsPerRow = itemsPerRow
         

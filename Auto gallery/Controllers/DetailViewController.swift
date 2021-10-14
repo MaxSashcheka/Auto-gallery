@@ -22,16 +22,23 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureCarCollectionView()
+        configureNavigationCollectionView()
+        
+        setupNavigationBar()
+    }
+    
+    private func configureCarCollectionView() {
         carCollectionView.delegate = self
         carCollectionView.dataSource = self
         carCollectionView.register(CarCell.nib(), forCellWithReuseIdentifier: CarCell.reuseIdentifier)
         carCollectionView.isPagingEnabled = true
-        
+    }
+    
+    private func configureNavigationCollectionView() {
         navigationCollectionView.delegate = self
         navigationCollectionView.dataSource = self
         navigationCollectionView.register(NavigationCell.nib(), forCellWithReuseIdentifier: NavigationCell.reuseIdentifier)
-        
-        setupNavigationBar()
     }
     
     private func setupNavigationBar() {
@@ -42,11 +49,6 @@ class DetailViewController: UIViewController {
         ] 
         titleLabel.attributedText = NSAttributedString(string: "\(groupCollection.name)", attributes: attributes)
         navigationItem.titleView = titleLabel
-        
-        
-        
-        
-        
     }
 
 }
@@ -67,18 +69,15 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == navigationCollectionView {
-            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NavigationCell.reuseIdentifier, for: indexPath) as! NavigationCell
             
             // Check if current cell should be selected (filled with color)
             cell.isSelectedSetup(selectedIndex == indexPath.item)
-  
             let group = groupCollection.groups[indexPath.item]
             cell.configure(withGroup: group)
             
             return cell
         } else {
-            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarCell.reuseIdentifier, for: indexPath) as! CarCell
             
             let group = groupCollection.groups[selectedIndex]
@@ -93,7 +92,7 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == navigationCollectionView {
             selectedIndex = indexPath.item
-            
+
             navigationCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             carCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: true)
             
@@ -105,8 +104,7 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         pageControl.currentPage = indexPath.item
     }
-    
-    
+
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -114,7 +112,6 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
 extension DetailViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         if collectionView == navigationCollectionView {
             let group = groupCollection.groups[indexPath.item]
             let itemWidth = group.name.widthOfString(usingFont: UIFont.systemFont(ofSize: 17)) + 30
@@ -123,6 +120,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: itemWidth, height: itemHeight)
         } else {
             let itemWidth = collectionView.frame.width - carCollectionInsets.left * 2
+            
             return CGSize(width: itemWidth, height: itemWidth * 1.2)
         }
     }

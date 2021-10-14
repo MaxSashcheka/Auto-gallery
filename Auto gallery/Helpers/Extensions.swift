@@ -36,7 +36,7 @@ extension UIView {
         if isSelected {
             layer.shadowColor = UIColor.red.cgColor
         } else {
-            layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.35).cgColor
+            layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         }
     }
 }
